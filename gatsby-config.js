@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Interconnecx`,
+    description: `We provide Dedicated Servers and Colocation services`,
+    author: `@codingbutter`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -32,5 +32,14 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-whmcs`,
+      options: {
+        whmcspath: `https://path.to.whmcs/`,
+        username: `MY_API_KEY`,
+        password: `MY_API_SECRET`,
+        accesskey: `MY_ACCESS_KEY`,
+      },
+    },
   ],
 }
