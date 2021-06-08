@@ -4,9 +4,10 @@ exports.sourceNodes = async (
   { actions, createNodeId, createContentDigest },
   configOptions
 ) => {
-  const { createNode } = actions
-  delete configOptions.plugins
-  const createProductNode = product => {
+    const { createNode } = actions
+    
+    const createProductNode = acync (product) => {
+        
     const nodeId = createNodeId(`whmcs-product-${product.id}`)
     const nodeContent = JSON.stringify(product)
     const nodeData = Object.assign({}, product, {
@@ -19,7 +20,12 @@ exports.sourceNodes = async (
         contentDigest: createContentDigest(product),
       },
     })
-    return nodeData
-  }
-  console.log(getProducts())
+        createNode(nodeData)
+    }
+
+    const products = await getProducts();
+    
+    products.map(product => {
+      createProductNode(product)
+    })
 }
