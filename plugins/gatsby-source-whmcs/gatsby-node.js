@@ -26,3 +26,16 @@ exports.sourceNodes = async (
 
   await Promise.all(products.map(async product => createProductNode(product)))
 }
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `WHMCSProduct`) {
+    const city = node.name.split("-").trim().toLowerCase()
+
+    createNodeField({
+      node,
+      name: `city`,
+      value: city,
+    })
+  }
+}
