@@ -6,7 +6,7 @@ exports.sourceNodes = async (
 ) => {
     const { createNode } = actions
     
-    const createProductNode = acync (product) => {
+    const createProductNode = async (product) => {
         
     const nodeId = createNodeId(`whmcs-product-${product.id}`)
     const nodeContent = JSON.stringify(product)
