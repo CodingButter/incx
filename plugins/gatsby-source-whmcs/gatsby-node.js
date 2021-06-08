@@ -23,8 +23,7 @@ exports.sourceNodes = async (
   }
 
   const products = await getProducts()
-
-  products.map(product => {
-    createProductNode(product)
-  })
+  await Promise.all(
+    products.map(async product => await createProductNode(product))
+  )
 }
