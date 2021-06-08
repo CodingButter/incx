@@ -19,10 +19,12 @@ exports.sourceNodes = async (
         contentDigest: createContentDigest(product),
       },
     })
-    createNode(nodeData)
+    await createNode(nodeData)
+    return
   }
 
   const products = await getProducts()
+  
   await Promise.all(
     products.map(async product => await createProductNode(product))
   )
