@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `Interconnecx`,
@@ -35,10 +37,11 @@ module.exports = {
     {
       resolve: `gatsby-source-whmcs`,
       options: {
-        whmcspath: `https://path.to.whmcs/`,
-        username: `MY_API_KEY`,
-        password: `MY_API_SECRET`,
-        accesskey: `MY_ACCESS_KEY`,
+        location: process.env.LOCATION,
+        whmcspath: process.env.WHMCS_URL,
+        username: process.env.WHMCS_USERNAME,
+        password: process.env.WHMCS_PASSWORD,
+        accesskey: process.env.WHMCS_ACCESS_KEY,
       },
     },
   ],
